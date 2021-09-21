@@ -284,14 +284,14 @@ const Home = (props: HomeProps) => {
           <Grid item xs={false} sm={1} />
             <Grid item xs={12} sm={4} alignItems="stretch">
               <SmallWhiteTextTypography variant="h6" align="center">
-                What is this? <br />
+              <br />What is this? <br />
               </SmallWhiteTextTypography>
               <GreyTextTypography variant="body1" align="center">
                 art
                 <br />
                 mint it or don't <br />
                 idek if I wanna list these on digitaleyez<br /><br />
-                <br /><br /><br /><br /><br /><br />
+                
               </GreyTextTypography>
             </Grid>
 
@@ -299,18 +299,18 @@ const Home = (props: HomeProps) => {
 
             <Grid item xs={12} sm={4} alignItems="stretch">
               <SmallWhiteTextTypography variant="h6" align="center">
-                What's next? <br />
+              <br />What's next? <br />
               </SmallWhiteTextTypography>
               <GreyTextTypography variant="body1" align="center">
                 {/* Still dropping animated SOLSTATION MINI  <br /><br />
                 collection one by one <Button variant="text" 
                 href="solstation.boroghor.com" 
                 style={{textTransform: 'none'}}>at my Metaplex instance.  
-                </Button>*/} RARE ROCK <br />2️⃣❌💯
+                </Button>*/} RARE ROCK <br />2️⃣❌💯<br /><br /><br /><br />
               </GreyTextTypography>
             </Grid>
 
-            <Grid item xs={false} sm={1} />
+            {/* <Grid item xs={false} sm={1} /> */}
 
           </Grid>
         </Grid>
