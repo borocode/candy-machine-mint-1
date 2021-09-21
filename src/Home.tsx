@@ -10,7 +10,8 @@ import background from "./assets/img/background.png"
 import { Grid } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import Header from "./Header";
-
+import * as React from 'react';
+import Box from '@mui/material/Box';
 
 import * as anchor from "@project-serum/anchor";
 
@@ -26,6 +27,8 @@ import {
   mintOneToken,
   shortenAddress,
 } from "./candy-machine";
+import { YoutubeSearchedFor } from "@material-ui/icons";
+import shadows from "@material-ui/core/styles/shadows";
 
 const ConnectButton = styled(WalletDialogButton)``;
 
@@ -49,7 +52,18 @@ const styles = {
 
 const WhiteTextTypography = withStyles({
   root: {
-    color: "#FFFFFF"
+    color: "#FFFFFF",
+    fontSize: '14rem',
+    /*shadows: "0 3px 5px 2px rgba(255, 105, 135, 0.3)"
+    fonts*/
+  }
+})(Typography);
+
+const SmallWhiteTextTypography = withStyles({
+  root: {
+    color: "#FFFFFF",
+    fontSize: '2rem'
+  /*  fonts*/
   }
 })(Typography);
 
@@ -201,38 +215,18 @@ const Home = (props: HomeProps) => {
         <Typography align="center"><img src={background} height="100%" resizeMode="cover" position="relative"/></Typography><br />
 
         <WhiteTextTypography variant="h3" align="center" position="absolute">
-          &mut self <br />
-          (Mutable Self)
-        </WhiteTextTypography>
+          SOLSTATION PIXEL <br />
+                 </WhiteTextTypography>
 
-{/*
-        <Grid container direction="column">
-          <Grid item container>
-            <Grid item xs={false} sm={1} />
-            <Grid item xs={12} sm={10}>
-              <WhiteTextTypography>Arboretum presents a new model of digital art collection and charitable giving.</WhiteTextTypography><br />
+{}
 
-              <WhiteTextTypography>The Arboretum roadmap revolves around two things:</WhiteTextTypography><br />
-
-              <WhiteTextTypography>1) Supporting environmental causes<br />
-              2) Delivering value to Arboretum NFT holders</WhiteTextTypography><br />
-
-              <WhiteTextTypography>Our first drop consists of a generative collection of trees encoded on the Solana blockchain. Claim your unique piece of the Arboretum forest, and join Solana's first cryptophilanthropy DAO.</WhiteTextTypography><br />
-
-              <WhiteTextTypography>Minting has now completed, and 25% of all proceeds were donated to Amazon Rainforest Conservation efforts.</WhiteTextTypography><br />
-            </Grid>
-            <Grid item xs={false} sm={2} />
-          </Grid>
-        </Grid>
-*/}
-
-        <WhiteTextTypography align="center" variant="body1">{wallet.connected && (
+        <SmallWhiteTextTypography align="center" variant="body1">{wallet.connected && (
           <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
-        )}</WhiteTextTypography>
+        )}</SmallWhiteTextTypography>
 
-        <WhiteTextTypography align="center" variant="body1">{wallet.connected && (
+        <SmallWhiteTextTypography align="center" variant="body1">{wallet.connected && (
           <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
-        )}</WhiteTextTypography>
+        )}</SmallWhiteTextTypography>
 
         <Typography align="center" variant="body1">
         <MintContainer>
@@ -264,44 +258,19 @@ const Home = (props: HomeProps) => {
           )}
         </MintContainer>
         </Typography>
-{/*
-        <br />
-        
 
-        <Grid container direction="column">
-          <Grid item container>
-            <Grid item xs={false} sm={2} />
-            
-
-            <Grid item xs={12} sm={10}>
-
-              <WhiteTextTypography>To start, NFT holders will be inducted into the community-driven Arboretum DAO, gaining
-              early access to future drops, as well as airdropped generative concept art in the lead-up
-              to future projects. While our first project is focused on protecting the Amazon Rainforest, future collections will
-              address other environmental causes important to the Arboretum community with thematic, generative artwork.</WhiteTextTypography><br />
-
-            </Grid>
-
-            <Grid item xs={false} sm={2} />
-*/}
         <Grid container direction="column">
           <Grid item container>
           <Grid item xs={false} sm={1} />
             <Grid item xs={12} sm={4} alignItems="stretch">
-              <WhiteTextTypography variant="h6" align="center">
-                MISSION <br /><br />
-              </WhiteTextTypography>
+              <SmallWhiteTextTypography variant="h6" align="center">
+                What is this? <br /><br />
+              </SmallWhiteTextTypography>
               <GreyTextTypography variant="body1" align="center">
-                Labyrinth is a digital art collective creating generative artwork on the Solana blockchain.
-                As a collective, we strive to create cutting edge digital art that visually stimulates while also
-                inviting introspection and deep reflection. Core tenets of Labyrinth's mission include: (i)
-                building a community in support of the arts on Solana; (ii) achieving a charitable
-                objective with each of our drops.
+                art
                 <br /><br />
-                Our artwork is  influenced by early digital artwork, often featuring a pixelated style.
-                Thematically, much of our material focuses on identity, meditation.
-                In addition to a host of visual influences, the thematic content of our work is heavily influenced
-                by Zen Buddhism, as well as Meshuggah, Gojira, and other technical metal bands.
+                mint it or don't <br /><br />
+                idek if I wanna list these on digitaleyez<br /><br />
                 <br /><br /><br /><br /><br /><br />
               </GreyTextTypography>
             </Grid>
@@ -309,20 +278,15 @@ const Home = (props: HomeProps) => {
             <Grid item xs={false} sm={2}/>
 
             <Grid item xs={12} sm={4} alignItems="stretch">
-              <WhiteTextTypography variant="h6" align="center">
-                ROADMAP <br /><br />
-              </WhiteTextTypography>
+              <SmallWhiteTextTypography variant="h6" align="center">
+                What's next? <br /><br />
+              </SmallWhiteTextTypography>
               <GreyTextTypography variant="body1" align="center">
-                Our first drop, Arboretum, consisted of 64 pixelated trees. Holders of our genesis mint are entitled to early access to subsequent
-                mints, as well as ad hoc airdrops containing concept art in the lead-up to future collections.
-                In accordance with our charitable mission, 25% of proceeds associated with Arboretum went to <a href="https://amazonwatch.org/" target="_blank">Amazon Watch</a> to aid in their efforts to protect the Amazon Rainforest,
-                while empowering indigenous populations.
-                <br /><br />
-                Our upcoming second drop, &mut self (Mutable Self) is a meditation on identity which consists of collage
-                and abstract work drawing from masterpieces of self-portraiture. The collection will be comprised of 548 unique pieces.
-                Once again, 25% of sale proceeds will be donated to charity, this time to the <a href="https://maps.org/" target="_blank">Multidisciplinary Association for Psychedelic Studies</a> to
-                aid in their work to fight treatment-resistant depression and other chronic mental health ailments. 
-                <br /><br /><br /><br /><br /><br />
+                {/* Still dropping animated SOLSTATION MINI  <br /><br />
+                collection one by one <Button variant="text" 
+                href="solstation.boroghor.com" 
+                style={{textTransform: 'none'}}>at my Metaplex instance.  
+                </Button>*/} RARE ROCK next <br /><br />2️⃣❌💯
               </GreyTextTypography>
             </Grid>
 

@@ -39,29 +39,24 @@ const Header = () => {
           <Toolbar>
 
             <Typography>
-              <Button size="small" href="https://twitter.com/ArboretumNFT" target="_blank">
-                <img src={TwitterIcon} height = "18px" />
+              <Button size="medium" href="https://twitter.com/SOLSTATIONNFT" target="_blank">
+                <img src={TwitterIcon} height = "30px" alt="SOLSTATIONNFT TWITTER" fullWidth={false} />
               </Button>
-              <Button size="small" href="https://discord.gg/4Qx4Vnh3Sr" target="_blank">
+            {/*   <Button size="small" href="https://discord.gg/" target="_blank">
                 <img src={DiscordIcon} height = "24px" />
-              </Button>
+              </Button>  */}
             </Typography>
 
             <div>
-                <Button variant="text" href="/" style={{textTransform: 'none'}}>
-                  home
+                <Button variant="contained" size="large" fullWidth={false} href="/" style={{textTransform: 'none'}} >
+                  HOME
                 </Button>
             </div>
 
-            <div>
-                <Button variant="text" href="/" style={{textTransform: 'none'}}>
-                  arboretum
-                </Button>
-            </div>
 
             <div>
-                <Button variant="text" href="/" style={{textTransform: 'none'}}>
-                  &mut self
+                <Button variant="outlined" size="large" color="info" href="https://solstation.boroghor.com" style={{textTransform: 'none'}}>
+                  SOLSTATION MINI COLLECTION
                 </Button>
             </div>
 
