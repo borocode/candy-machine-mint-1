@@ -218,7 +218,7 @@ const Home = (props: HomeProps) => {
           SOLSTATION PIXEL <br />
                  </WhiteTextTypography>
 
-{}
+
 
         <SmallWhiteTextTypography align="center" variant="body1">{wallet.connected && (
           <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
