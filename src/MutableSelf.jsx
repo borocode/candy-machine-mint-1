@@ -193,85 +193,9 @@ const Home = (props: HomeProps) => {
       <ThemeProvider theme={darkTheme}>
         <Typography align="center"><img src={background} height="100%"/></Typography><br />
 
-{/*
-        <Grid container direction="column">
-          <Grid item container>
-            <Grid item xs={false} sm={1} />
-            <Grid item xs={12} sm={10}>
-              <WhiteTextTypography>Arboretum presents a new model of digital art collection and charitable giving.</WhiteTextTypography><br />
 
-              <WhiteTextTypography>The Arboretum roadmap revolves around two things:</WhiteTextTypography><br />
 
-              <WhiteTextTypography>1) Supporting environmental causes<br />
-              2) Delivering value to Arboretum NFT holders</WhiteTextTypography><br />
 
-              <WhiteTextTypography>Our first drop consists of a generative collection of trees encoded on the Solana blockchain. Claim your unique piece of the Arboretum forest, and join Solana's first cryptophilanthropy DAO.</WhiteTextTypography><br />
-
-              <WhiteTextTypography>Minting has now completed, and 25% of all proceeds were donated to Amazon Rainforest Conservation efforts.</WhiteTextTypography><br />
-            </Grid>
-            <Grid item xs={false} sm={2} />
-          </Grid>
-        </Grid>
-*/}
-
-        {/*<WhiteTextTypography align="center" variant="body1">{wallet.connected && (
-          <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
-        )}</WhiteTextTypography>
-
-        <WhiteTextTypography align="center" variant="body1">{wallet.connected && (
-          <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
-        )}</WhiteTextTypography>
-
-        <Typography align="center" variant="body1">
-        <MintContainer>
-          {!wallet.connected ? (
-            <ConnectButton>Connect Wallet</ConnectButton>
-          ) : (
-            <MintButton
-              disabled={isSoldOut || isMinting || !isActive}
-              onClick={onMint}
-              variant="contained"
-            >
-              {isSoldOut ? (
-                "SOLD OUT"
-              ) : isActive ? (
-                isMinting ? (
-                  <CircularProgress />
-                ) : (
-                  "MINT"
-                )
-              ) : (
-                <Countdown
-                  date={startDate}
-                  onMount={({ completed }) => completed && setIsActive(true)}
-                  onComplete={() => setIsActive(true)}
-                  renderer={renderCounter}
-                />
-              )}
-            </MintButton>
-          )}
-        </MintContainer>
-        </Typography>*/}
-{/*
-        <br />
-        
-
-        <Grid container direction="column">
-          <Grid item container>
-            <Grid item xs={false} sm={2} />
-            
-
-            <Grid item xs={12} sm={10}>
-
-              <WhiteTextTypography>To start, NFT holders will be inducted into the community-driven Arboretum DAO, gaining
-              early access to future drops, as well as airdropped generative concept art in the lead-up
-              to future projects. While our first project is focused on protecting the Amazon Rainforest, future collections will
-              address other environmental causes important to the Arboretum community with thematic, generative artwork.</WhiteTextTypography><br />
-
-            </Grid>
-
-            <Grid item xs={false} sm={2} />
-*/}
         <Grid container direction="column">
           <Grid item container>
           <Grid item xs={false} sm={2} />
@@ -280,7 +204,6 @@ const Home = (props: HomeProps) => {
                 MISSION <br /><br />
               </WhiteTextTypography>
               <WhiteTextTypography variant="body1" align="center">
-                Labyrinth is a digital art collective
 
                 <br /><br /><br /><br /><br /><br />
               </WhiteTextTypography>
@@ -291,7 +214,6 @@ const Home = (props: HomeProps) => {
                 ROADMAP <br /><br />
               </WhiteTextTypography>
               <WhiteTextTypography variant="body1" align="center">
-                Labyrinth is a digital art collective
               </WhiteTextTypography>
             </Grid>
 
