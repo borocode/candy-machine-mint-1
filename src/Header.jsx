@@ -48,14 +48,14 @@ const Header = () => {
             </Typography>
 
             <div>
-                <Button variant="contained" size="large" fullWidth={false} href="/" style={{textTransform: 'none'}} >
+                <Button variant="contained" size="medium" fullWidth={false} href="/" style={{textTransform: 'none'}} >
                   HOME
                 </Button>
             </div>
-
+<br/ >
 
             <div>
-                <Button variant="outlined" size="large" color="info" href="https://solstation.boroghor.com" style={{textTransform: 'none'}}>
+                <Button variant="contained" size="medium" color="info" href="https://solstation.boroghor.com" style={{textTransform: 'none'}}>
                   SOLSTATION MINI COLLECTION
                 </Button>
             </div>
