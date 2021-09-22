@@ -109,6 +109,9 @@ const Home = (props: HomeProps) => {
   const [isActive, setIsActive] = useState(false); // true when countdown completes
   const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
+  const [counter, setCounter] = useState<any>({});
+  const [price, setPrice] = useState<number | null>(null);
+
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
@@ -213,7 +216,7 @@ const Home = (props: HomeProps) => {
         signTransaction: wallet.signTransaction,
       } as anchor.Wallet;
 
-      const { candyMachine, goLiveDate, itemsRemaining } =
+      const { candyMachine, goLiveDate, itemsRemaining, itemsAvailable, price } =
         await getCandyMachineState(
           anchorWallet,
           props.candyMachineId,
@@ -223,6 +226,11 @@ const Home = (props: HomeProps) => {
       setIsSoldOut(itemsRemaining === 0);
       setStartDate(goLiveDate);
       setCandyMachine(candyMachine);
+      setCounter({
+        itemsRemaining,
+        itemsAvailable
+      });
+      setPrice(price);
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
@@ -240,13 +248,25 @@ const Home = (props: HomeProps) => {
 
 
 
-        <SmallWhiteTextTypography align="center" variant="body1">{wallet.connected && (
-          <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
-        )}</SmallWhiteTextTypography>
+
+         <SmallWhiteTextTypography align="center" variant="body1">
+          <p> {counter.itemsRemaining} of {counter.itemsAvailable} left </p>
+        </SmallWhiteTextTypography>
 
         <SmallWhiteTextTypography align="center" variant="body1">{wallet.connected && (
-          <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
+          <p>your balance: {(balance || 0).toLocaleString()} SOL</p>
+        )}</SmallWhiteTextTypography>   
+
+        
+        <SmallWhiteTextTypography align="center" variant="body1">{wallet.connected && (
+          <p>your addy: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
         )}</SmallWhiteTextTypography>
+
+{/* 
+        <SmallWhiteTextTypography align="center" variant="body1">
+          <p>how many left? {counter.itemsRemaining} </p>
+        </SmallWhiteTextTypography> */}
+
 
         <Typography align="center" variant="body1">
         <MintContainer>
@@ -264,7 +284,7 @@ const Home = (props: HomeProps) => {
                 isMinting ? (
                   <CircularProgress />
                 ) : (
-                  "0.3 SOL"
+                  `${price} SOL`
                 )
               ) : (
                 <Countdown

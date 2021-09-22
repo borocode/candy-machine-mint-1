@@ -14,8 +14,8 @@ import { createTheme, ThemeProvider, withStyles } from '@material-ui/core/styles
 
 // Icons
 import TwitterIcon from "./assets/img/twitter.png";
-import DiscordIcon from "./assets/img/discord.png"
-
+// import DiscordIcon from "./assets/img/discord.png"
+import GithubIcon from "./assets/img/github.png"
 
 
 const useStyles = makeStyles(() => ({
@@ -42,16 +42,16 @@ const Header = () => {
               <Button size="medium" href="https://twitter.com/SOLSTATIONNFT" target="_blank">
                 <img src={TwitterIcon} height = "30px" alt="SOLSTATIONNFT TWITTER" fullWidth={false} />
               </Button>
-            {/*   <Button size="small" href="https://discord.gg/" target="_blank">
-                <img src={DiscordIcon} height = "24px" />
-              </Button>  */}
+               <Button size="small" href="https://github.com/borocode/candy-machine-mint-1" target="_blank">
+                <img src={GithubIcon} height = "30px" />
+              </Button>  
             </Typography>
 
-            <div>
+            {/* <div>
                 <Button variant="contained" size="medium" fullWidth={false} href="/" style={{textTransform: 'none'}} >
                   HOME
                 </Button>
-            </div>
+            </div> */}
 <br/ >
 
             <div>
