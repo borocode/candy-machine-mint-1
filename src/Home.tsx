@@ -5,6 +5,7 @@ import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { responsiveFontSizes } from '@mui/material/styles';
 import Typography from "@material-ui/core/Typography";
 import background from "./assets/img/background.png"
 import { Grid } from "@material-ui/core";
@@ -44,6 +45,18 @@ const darkTheme = createTheme({
   },
 });
 
+const theme = createTheme();
+
+// theme.typography.h3 = {
+//   fontSize: '1.2rem',
+//   '@media (min-width:600px)': {
+//     fontSize: '15rem',
+//   },
+//   [theme.breakpoints.up('md')]: {
+//     fontSize: '2rem',
+//   },
+// };
+
 const styles = {
   paperContainer: {
     backgroundImage: './assets/img/background.png',
@@ -53,7 +66,14 @@ const styles = {
 const WhiteTextTypography = withStyles({
   root: {
     color: "#FFFFFF",
-    fontSize: '14rem',
+    textAlign: 'center',
+    fontSize: '4rem',
+  '@media (min-width:600px)': {
+    fontSize: '7rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '11rem',
+  },
     /*shadows: "0 3px 5px 2px rgba(255, 105, 135, 0.3)"
     fonts*/
   }
@@ -62,7 +82,7 @@ const WhiteTextTypography = withStyles({
 const SmallWhiteTextTypography = withStyles({
   root: {
     color: "#FFFFFF",
-    fontSize: '2rem'
+    fontSize: '1.4rem'
   /*  fonts*/
   }
 })(Typography);
@@ -89,6 +109,9 @@ const Home = (props: HomeProps) => {
   const [isActive, setIsActive] = useState(false); // true when countdown completes
   const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
+  const [counter, setCounter] = useState<any>({});
+  const [price, setPrice] = useState<number | null>(null);
+
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
@@ -193,7 +216,7 @@ const Home = (props: HomeProps) => {
         signTransaction: wallet.signTransaction,
       } as anchor.Wallet;
 
-      const { candyMachine, goLiveDate, itemsRemaining } =
+      const { candyMachine, goLiveDate, itemsRemaining, itemsAvailable, price } =
         await getCandyMachineState(
           anchorWallet,
           props.candyMachineId,
@@ -203,6 +226,11 @@ const Home = (props: HomeProps) => {
       setIsSoldOut(itemsRemaining === 0);
       setStartDate(goLiveDate);
       setCandyMachine(candyMachine);
+      setCounter({
+        itemsRemaining,
+        itemsAvailable
+      });
+      setPrice(price);
     })();
   }, [wallet, props.candyMachineId, props.connection]);
 
@@ -212,21 +240,33 @@ const Home = (props: HomeProps) => {
       <Header />
         </Grid>
       <ThemeProvider theme={darkTheme}>
-        <Typography align="center"><img src={background} height="100%" resizeMode="cover" position="relative"/></Typography><br />
+        <Typography align="center"><img src={background} alt="SOLSTATION PIXEL CONTACT SHEET" width="100%" resizeMode="center" position="relative"/></Typography><br />
 
-        <WhiteTextTypography variant="h3" align="center" position="absolute">
+        <WhiteTextTypography variant="h3" align="center" position="relative">
           SOLSTATION PIXEL <br />
                  </WhiteTextTypography>
 
 
 
-        <SmallWhiteTextTypography align="center" variant="body1">{wallet.connected && (
-          <p>Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
-        )}</SmallWhiteTextTypography>
+
+         <SmallWhiteTextTypography align="center" variant="body1">
+          <p> {counter.itemsRemaining} of {counter.itemsAvailable} left </p>
+        </SmallWhiteTextTypography>
 
         <SmallWhiteTextTypography align="center" variant="body1">{wallet.connected && (
-          <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
+          <p>your balance: {(balance || 0).toLocaleString()} SOL</p>
+        )}</SmallWhiteTextTypography>   
+
+        
+        <SmallWhiteTextTypography align="center" variant="body1">{wallet.connected && (
+          <p>your addy: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
         )}</SmallWhiteTextTypography>
+
+{/* 
+        <SmallWhiteTextTypography align="center" variant="body1">
+          <p>how many left? {counter.itemsRemaining} </p>
+        </SmallWhiteTextTypography> */}
+
 
         <Typography align="center" variant="body1">
         <MintContainer>
@@ -244,7 +284,7 @@ const Home = (props: HomeProps) => {
                 isMinting ? (
                   <CircularProgress />
                 ) : (
-                  "MINT"
+                  `${price} SOL`
                 )
               ) : (
                 <Countdown
@@ -264,14 +304,14 @@ const Home = (props: HomeProps) => {
           <Grid item xs={false} sm={1} />
             <Grid item xs={12} sm={4} alignItems="stretch">
               <SmallWhiteTextTypography variant="h6" align="center">
-                What is this? <br /><br />
+              <br />What is this? <br />
               </SmallWhiteTextTypography>
               <GreyTextTypography variant="body1" align="center">
                 art
-                <br /><br />
-                mint it or don't <br /><br />
-                idek if I wanna list these on digitaleyez<br /><br />
-                <br /><br /><br /><br /><br /><br />
+                <br />
+                mint it or don't <br />
+                idek if I wanna list these on digitaleyes<br /><br />
+                
               </GreyTextTypography>
             </Grid>
 
@@ -279,18 +319,18 @@ const Home = (props: HomeProps) => {
 
             <Grid item xs={12} sm={4} alignItems="stretch">
               <SmallWhiteTextTypography variant="h6" align="center">
-                What's next? <br /><br />
+              <br />What's next? <br />
               </SmallWhiteTextTypography>
               <GreyTextTypography variant="body1" align="center">
                 {/* Still dropping animated SOLSTATION MINI  <br /><br />
                 collection one by one <Button variant="text" 
                 href="solstation.boroghor.com" 
                 style={{textTransform: 'none'}}>at my Metaplex instance.  
-                </Button>*/} RARE ROCK next <br /><br />2️⃣❌💯
+                </Button>*/} RARE ROCK <br />2️⃣❌💯<br /><br /><br /><br />
               </GreyTextTypography>
             </Grid>
 
-            <Grid item xs={false} sm={1} />
+            {/* <Grid item xs={false} sm={1} /> */}
 
           </Grid>
         </Grid>
