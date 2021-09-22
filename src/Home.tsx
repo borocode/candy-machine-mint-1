@@ -31,13 +31,14 @@ import {
 import { YoutubeSearchedFor } from "@material-ui/icons";
 import shadows from "@material-ui/core/styles/shadows";
 
-const ConnectButton = styled(WalletDialogButton)``;
+const ConnectButton = styled(WalletDialogButton)` color: primary`;
+// const ConnectButton = styled(WalletDialogButton)` color: secondary`;
 
 const CounterText = styled.span``; // add your styles here
 
 const MintContainer = styled.div``; // add your styles here
 
-const MintButton = styled(Button)``; // add your styles here
+const MintButton = styled(Button)` color: white`; // add your styles here
 
 const darkTheme = createTheme({
   palette: {
@@ -254,7 +255,7 @@ const Home = (props: HomeProps) => {
         </SmallWhiteTextTypography>
 
         <SmallWhiteTextTypography align="center" variant="body1">{wallet.connected && (
-          <p>your balance: {(balance || 0).toLocaleString()} SOL</p>
+          <p>your balance: ◎{(balance || 0).toLocaleString()} </p>
         )}</SmallWhiteTextTypography>   
 
         
@@ -277,6 +278,8 @@ const Home = (props: HomeProps) => {
               disabled={isSoldOut || isMinting || !isActive}
               onClick={onMint}
               variant="contained"
+              style={{backgroundColor: "slateblue", color: "white"}}
+
             >
               {isSoldOut ? (
                 "SOLD OUT"
@@ -284,7 +287,7 @@ const Home = (props: HomeProps) => {
                 isMinting ? (
                   <CircularProgress />
                 ) : (
-                  `${price} SOL`
+                  `◎${price} `
                 )
               ) : (
                 <Countdown
@@ -322,7 +325,7 @@ const Home = (props: HomeProps) => {
               <br />What's next? <br />
               </SmallWhiteTextTypography>
               <GreyTextTypography variant="body1" align="center">
-                {/* Still dropping animated SOLSTATION MINI  <br /><br />
+                {/* Still  dropping animated SOLSTATION MINI  <br /><br />
                 collection one by one <Button variant="text" 
                 href="solstation.boroghor.com" 
                 style={{textTransform: 'none'}}>at my Metaplex instance.  
