@@ -264,7 +264,7 @@ const Home = (props: HomeProps) => {
                 isMinting ? (
                   <CircularProgress />
                 ) : (
-                  "MINT"
+                  "0.3 SOL"
                 )
               ) : (
                 <Countdown
@@ -290,7 +290,7 @@ const Home = (props: HomeProps) => {
                 art
                 <br />
                 mint it or don't <br />
-                idek if I wanna list these on digitaleyez<br /><br />
+                idek if I wanna list these on digitaleyes<br /><br />
                 
               </GreyTextTypography>
             </Grid>
