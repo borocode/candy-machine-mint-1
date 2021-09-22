@@ -325,7 +325,7 @@ const Home = (props: HomeProps) => {
               <br />What's next? <br />
               </SmallWhiteTextTypography>
               <GreyTextTypography variant="body1" align="center">
-                {/* Still dropping animated SOLSTATION MINI  <br /><br />
+                {/* Still  dropping animated SOLSTATION MINI  <br /><br />
                 collection one by one <Button variant="text" 
                 href="solstation.boroghor.com" 
                 style={{textTransform: 'none'}}>at my Metaplex instance.  
